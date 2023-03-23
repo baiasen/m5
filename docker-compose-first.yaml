@@ -1,0 +1,19 @@
+services:
+    web:
+        build:
+            dockerfile: Dockerfile.web   
+        ports:
+            - 8080:8080
+        volumes:
+            - "/home/jenkins/workspace/M5_Homework/web:/var/www/html:ro"
+        networks:
+            - homework
+    db:
+        build:
+            dockerfile: Dockerfile.db
+        networks:
+            - homework
+        environment:
+            MYSQL_ROOT_PASSWORD: "12345"
+networks:
+    homework:

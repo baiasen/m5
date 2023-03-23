@@ -1,0 +1,7 @@
+FROM trafex/php-nginx
+RUN rm -rf /var/www/html/*
+USER root
+RUN apk add --no-cache php81-pdo_mysql
+USER nobody
+WORKDIR /var/www/html 
+EXPOSE 8080

@@ -1,0 +1,19 @@
+services:
+    web:
+        image: baiasen72/m3-bgapp-web
+        deploy:
+            replicas: 3        
+        ports:
+            - 8080:8080
+        volumes:
+            - "/home/vagrant/m3/web:/var/www/html:ro"
+        networks:
+            - homework
+    db:
+        image: baiasen72/m3-bgapp-db
+        networks:
+            - homework
+        environment:
+            MYSQL_ROOT_PASSWORD: "12345"
+networks:
+    homework:
